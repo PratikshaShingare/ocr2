@@ -4,8 +4,7 @@
   "description": "Khanna Travels & Holidays — Travel & Visa Document Automation System (Vercel & Local)",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "build": "echo \"Vercel build complete - static assets and serverless functions ready\""
+    "start": "node backend/server.js"
   },
   "dependencies": {
     "docx": "^9.0.0",

@@ -1,0 +1,20 @@
+# Scratch test files
+scratch/
+uploads/
+generated/
+
+# Heavy local python backend
+backend/python/
+backend/__pycache__/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db
+*.log
