@@ -1,0 +1,29 @@
+{
+  "name": "khanna-travels-visa-automation",
+  "version": "2.0.0",
+  "description": "Khanna Travels & Holidays — Travel & Visa Document Automation System (Vercel & Local)",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "build": "echo \"Vercel build complete - static assets and serverless functions ready\""
+  },
+  "dependencies": {
+    "docx": "^9.0.0",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.x"
+  },
+  "keywords": [
+    "visa",
+    "travel",
+    "ocr",
+    "passport",
+    "hotel-blocking",
+    "cover-letter",
+    "vercel"
+  ],
+  "author": "Khanna Travels & Holidays",
+  "license": "ISC"
+}

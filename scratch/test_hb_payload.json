@@ -1,0 +1,28 @@
+{
+  "docType": "hotel_blocking",
+  "applicant": {
+    "fullName": "DEEPAK KUMAR"
+  },
+  "hotels": [
+    {
+      "confirmationNumber": "KH-882910-EU",
+      "hotelName": "Grand Palace Zurich",
+      "leadGuest": "DEEPAK KUMAR",
+      "checkIn": "15/10/2026",
+      "checkOut": "20/10/2026",
+      "duration": "5 Night(s)",
+      "city": "Zurich",
+      "phone": "+41 44 123 4567",
+      "address": "Bahnhofstrasse 10, 8001 Zurich, Switzerland",
+      "numRooms": "1",
+      "numGuests": "2 Adult(s)",
+      "guests": [
+        {
+          "guestName": "DEEPAK KUMAR\nSUNITA KUMAR",
+          "roomType": "Deluxe Double Room",
+          "numGuests": "2 Adult(s)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "khanna-travels-document-automation",
+  "version": "1.0.0",
+  "description": "Khanna Travels & Holidays — Travel & Visa Document Automation System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["travel", "visa", "ocr", "cover-letter", "hotel-blocking"],
+  "author": "Khanna Travels & Holidays",
+  "license": "ISC"
+}

@@ -1,0 +1,411 @@
+/* ==========================================================================
+   Khanna Travels & Holidays — App shell layout
+   ========================================================================== */
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- Header ---------------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-h);
+  padding: 0 var(--space-5);
+  padding-top: var(--safe-top);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.brand__logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  flex: none;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.brand__name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand__subtitle {
+  font-size: 0.72rem;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: var(--space-4);
+}
+
+.primary-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.primary-nav__link:hover {
+  background: var(--color-surface-alt);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.primary-nav__link.is-active {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.header-spacer {
+  flex: 1;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-toggle {
+  display: none !important;
+}
+
+/* ---------------- Main content ---------------- */
+.app-main {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.view {
+  display: none;
+  padding: var(--space-6) var(--space-5) var(--space-10);
+  flex: 1;
+}
+
+.view.is-active {
+  display: block;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--space-4);
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step-header {
+  margin-bottom: var(--space-5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.step-title-group h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+  color: var(--color-text);
+}
+
+.step-title-group p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.step-navigation-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.view-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.view-header__text h1 {
+  margin-bottom: var(--space-1);
+}
+
+.view-header__text p {
+  margin: 0;
+}
+
+/* ---------------- Stepper (New Application wizard) ---------------- */
+
+/* Wraps .stepper-nav so the Phase 12 scroll-fade (components.css
+   .scroll-fade) has a non-scrolling element to pin its edge fades to —
+   .stepper-nav itself is the overflow-x:auto element, so it can't host
+   them directly (they'd scroll away with the step buttons). Carries the
+   spacing that used to live on .stepper-nav itself so nothing shifts. */
+.stepper-nav-scroll-fade {
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-md);
+}
+
+.stepper-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  overflow-x: auto;
+  padding: var(--space-2);
+  /* Without this, router.js's scrollIntoView("nearest") on the active step
+     (Phase 12) aligns flush with this element's true edge, ignoring its own
+     padding — confirmed by measurement: it left scrollLeft sitting 8px
+     (exactly --space-2) short of both true 0 and the true max, which in
+     turn made the Phase 12 scroll-fade affordance below wrongly think
+     there was still more to scroll at the very first/last step. This tells
+     scrollIntoView to treat the padding as part of the "keep clear" inset,
+     matching the container's own visual padding exactly. */
+  scroll-padding-inline: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+
+.stepper-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.stepper-nav__item:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.stepper-nav__item.is-active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.stepper-nav__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  flex: none;
+}
+
+.stepper-nav__item.is-active .stepper-nav__index {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.step-view {
+  display: none;
+}
+
+.step-view.is-active {
+  display: block;
+}
+
+.wizard-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------------- Footer ---------------- */
+.app-footer {
+  width: 100%;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: var(--space-4) var(--space-6);
+  margin-top: auto;
+  z-index: 10;
+}
+
+.app-footer__inner {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.app-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.app-footer__logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.app-footer__title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-text);
+}
+
+.app-footer__badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+}
+
+.app-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.app-footer__links a {
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.app-footer__links a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.app-footer__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .app-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-footer__copy {
+    align-items: flex-start;
+  }
+}
+
+/* ---------------- Mobile nav drawer ---------------- */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+}
+
+.mobile-nav.is-open {
+  display: block;
+}
+
+.mobile-nav__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 20, 28, 0.45);
+}
+
+.mobile-nav__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(78vw, 320px);
+  background: var(--color-surface);
+  padding: var(--space-5);
+  padding-top: calc(var(--space-5) + var(--safe-top));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-nav__panel .primary-nav__link {
+  width: 100%;
+  color: var(--color-text);
+}

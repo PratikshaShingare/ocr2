@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" width="240" height="56" fill="none">
+  <!-- Khanna Travels Official Logo -->
+  <g id="khanna-travels-brand">
+    <!-- Main Typography -->
+    <text x="12" y="30" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="24" letter-spacing="1.5" fill="#003B7A">KHANNA</text>
+    <text x="125" y="30" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="24" letter-spacing="1.5" fill="#D32F2F">TRAVELS</text>
+    
+    <!-- Red Accent Swoosh / Underline -->
+    <path d="M 12 36 Q 115 40 226 36" stroke="#D32F2F" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85" />
+    
+    <!-- Subtitle: Holidays Redefined -->
+    <text x="119" y="49" text-anchor="middle" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="8.5" letter-spacing="4.5" fill="#4A5568">HOLIDAYS REDEFINED</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+# Temporary upload and generation directories
+uploads/
+generated/
+*.tmp
+*.log
+
+# Python cache & virtualenvs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.venv/
+
+# Node dependencies
+node_modules/
+npm-debug.log*
+
+# Vercel cache
+.vercel/
+

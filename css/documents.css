@@ -1,0 +1,393 @@
+/* ==========================================================================
+   Khanna Travels & Holidays — Travel/checklist (step 3) & documents (step 4)
+   ========================================================================== */
+
+/* ---------------- Checklist preview (step 3) ---------------- */
+.checklist-preview-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.checklist-preview-columns h3 {
+  margin-bottom: var(--space-2);
+}
+
+.checklist-preview-list {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checklist-empty {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+}
+
+/* ---------------- Completion progress (step 4) ---------------- */
+.checklist-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.checklist-progress__bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.checklist-progress__fill {
+  height: 100%;
+  background: var(--color-success);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+/* ---------------- Document rows ---------------- */
+.doc-row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.doc-row__main {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.doc-row__label {
+  font-weight: 600;
+}
+
+.doc-row__meta {
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+}
+
+.doc-row__verified {
+  font-size: 0.78rem;
+  color: var(--color-success);
+}
+
+.doc-row__note-input {
+  margin-top: var(--space-1);
+  height: 34px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  max-width: 360px;
+}
+
+.doc-row__note-readonly {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+}
+
+.doc-row__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  flex: none;
+}
+
+/* ---------------- Interactive Consular Visa Checklist (Executive Grade) ---------------- */
+.checklist-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.checklist-criteria-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.checklist-criteria-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.checklist-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.checklist-metric-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.checklist-progress-bar-wrap {
+  height: 10px;
+  background: var(--color-surface-alt);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.checklist-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.checklist-section-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.checklist-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.checklist-section-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.checklist-section-badge {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  margin-left: auto;
+  background: var(--color-surface-alt);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.checklist-items-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Checklist Item Row */
+.doc-checklist-row {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid #cbd5e1;
+  background-color: var(--color-surface);
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.doc-checklist-row:hover {
+  border-color: #cbd5e1;
+  border-left-color: var(--color-primary);
+  background-color: var(--color-surface-alt);
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.doc-checklist-row.is-verified {
+  border-color: #a7f3d0 !important;
+  border-left: 4px solid #10b981 !important;
+  background-color: #f0fdf4 !important;
+  box-shadow: 0 2px 6px -1px rgba(16, 185, 129, 0.1);
+}
+
+:root[data-theme="dark"] .doc-checklist-row {
+  background-color: #131b26;
+  border-color: #2a3441;
+  border-left-color: #475569;
+}
+
+:root[data-theme="dark"] .doc-checklist-row:hover {
+  background-color: #1a2434;
+  border-color: #384454;
+}
+
+:root[data-theme="dark"] .doc-checklist-row.is-verified {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  border-left-color: #10b981 !important;
+}
+
+.doc-checklist-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #10b981;
+  margin-top: 2px;
+  border-radius: 4px;
+}
+
+.doc-checklist-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-checklist-headline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.doc-checklist-title {
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--color-text);
+  line-height: 1.35;
+}
+
+.doc-checklist-detail {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* Category & Status Pills */
+.badge-mandatory {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.badge-supporting-req {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.badge-status-pending {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+.badge-status-verified {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .app-header,
+  .sidebar,
+  .app-footer,
+  .no-print,
+  .modal-backdrop,
+  .toast-container,
+  .stepper-nav-scroll-fade {
+    display: none !important;
+  }
+  .app-body {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .app-main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  .view {
+    display: none !important;
+  }
+  .view.is-active {
+    display: block !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    page-break-inside: avoid;
+    margin-bottom: 12px !important;
+    padding: 10px 14px !important;
+  }
+  .doc-checklist-row {
+    break-inside: avoid;
+    border: 1px solid #e2e8f0 !important;
+    padding: 8px 10px !important;
+  }
+}
+
