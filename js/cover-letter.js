@@ -29,12 +29,16 @@ function prepareAndRenderCoverLetter() {
   }
 
   const generatedHtml = generateCoverLetterHTML(templateType);
-  const editor = document.getElementById('coverLetterEditor');
-  if (editor) {
-    editor.innerHTML = generatedHtml;
-    AppStore.coverLetter.renderedHtml = generatedHtml;
-    AppStore.coverLetter.isEdited = false;
+  const standaloneEditor = document.getElementById('standaloneCoverLetterEditor');
+  if (standaloneEditor) {
+    standaloneEditor.innerHTML = generatedHtml;
   }
+  const wizardEditor = document.getElementById('coverLetterEditor');
+  if (wizardEditor) {
+    wizardEditor.innerHTML = generatedHtml;
+  }
+  AppStore.coverLetter.renderedHtml = generatedHtml;
+  AppStore.coverLetter.isEdited = false;
 }
 
 /**

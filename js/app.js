@@ -433,6 +433,16 @@ function resetApplication() {
     previewImg.src = '';
     previewImg.style.display = 'none';
   }
+  const previewIframe = document.getElementById('canonicalPreviewIframe');
+  if (previewIframe) {
+    previewIframe.src = '';
+    previewIframe.style.display = 'none';
+  }
+  const standaloneIframe = document.getElementById('standalonePreviewIframe');
+  if (standaloneIframe) {
+    standaloneIframe.src = '';
+    standaloneIframe.style.display = 'none';
+  }
   const placeholder = document.getElementById('previewPlaceholder');
   if (placeholder) placeholder.style.display = 'flex';
 

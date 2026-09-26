@@ -84,6 +84,9 @@ async function handlePassportFileUpload(file) {
   }
 }
 
+// Alias for backwards-compatibility with inline HTML onchange
+window.handlePassportUpload = handlePassportFileUpload;
+
 /**
  * Fallback browser processing when running without backend server (e.g. GitHub Pages).
  */
@@ -96,6 +99,30 @@ async function processPassportInBrowser(file) {
     const dataUrl = e.target.result;
     PreviewController.setImage(dataUrl);
     AppStore.applicant.previewImageUrl = dataUrl;
+
+    // Update standalone view if present
+    const standaloneImg = document.getElementById('standalonePreviewImg');
+    const standaloneIframe = document.getElementById('standalonePreviewIframe');
+    const standalonePlaceholder = document.getElementById('standalonePreviewPlaceholder');
+    const isPdf = typeof dataUrl === 'string' && (dataUrl.startsWith('data:application/pdf') || file.name.endsWith('.pdf'));
+
+    if (isPdf) {
+      if (standaloneImg) standaloneImg.style.display = 'none';
+      if (standaloneIframe) {
+        standaloneIframe.src = dataUrl;
+        standaloneIframe.style.display = 'block';
+      }
+    } else {
+      if (standaloneIframe) {
+        standaloneIframe.src = '';
+        standaloneIframe.style.display = 'none';
+      }
+      if (standaloneImg) {
+        standaloneImg.src = dataUrl;
+        standaloneImg.style.display = 'block';
+      }
+    }
+    if (standalonePlaceholder) standalonePlaceholder.style.display = 'none';
 
     // Set extracted badge for visual feedback
     updateFieldBadge('pass_number_badge', 'Manual', 'manual');
@@ -110,14 +137,42 @@ async function processPassportInBrowser(file) {
 function applyPassportExtractionResults(data) {
   if (!data) return;
 
+  const previewSrc = data.previewImage || (data.pages && data.pages[0]?.previewImage);
+
   // Set canonical preview & multi-page support
   if (data.pages && Array.isArray(data.pages) && data.pages.length > 0) {
     PreviewController.setPages(data.pages);
     AppStore.applicant.pages = data.pages;
-    AppStore.applicant.previewImageUrl = data.previewImage || data.pages[0].previewImage;
+    AppStore.applicant.previewImageUrl = previewSrc;
   } else if (data.previewImage) {
     PreviewController.setImage(data.previewImage);
     AppStore.applicant.previewImageUrl = data.previewImage;
+  }
+
+  // Update standalone view if present
+  const standaloneImg = document.getElementById('standalonePreviewImg');
+  const standaloneIframe = document.getElementById('standalonePreviewIframe');
+  const standalonePlaceholder = document.getElementById('standalonePreviewPlaceholder');
+
+  if (previewSrc) {
+    const isPdf = typeof previewSrc === 'string' && (previewSrc.startsWith('data:application/pdf') || previewSrc.includes('.pdf'));
+    if (isPdf) {
+      if (standaloneImg) standaloneImg.style.display = 'none';
+      if (standaloneIframe) {
+        standaloneIframe.src = previewSrc;
+        standaloneIframe.style.display = 'block';
+      }
+    } else {
+      if (standaloneIframe) {
+        standaloneIframe.src = '';
+        standaloneIframe.style.display = 'none';
+      }
+      if (standaloneImg) {
+        standaloneImg.src = previewSrc;
+        standaloneImg.style.display = 'block';
+      }
+    }
+    if (standalonePlaceholder) standalonePlaceholder.style.display = 'none';
   }
 
   // Populate Passport details

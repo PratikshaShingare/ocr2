@@ -336,10 +336,10 @@ function syncStandaloneCoverLetterWorkspace() {
         </div>
 
         <!-- Word-like In-Browser Editing Toolbar -->
-        ${typeof WordToolbar !== 'undefined' ? WordToolbar.render('coverLetterEditor') : ''}
+        ${typeof WordToolbar !== 'undefined' ? WordToolbar.render('standaloneCoverLetterEditor') : ''}
 
         <div style="padding: 16px;">
-          <div id="coverLetterEditor" contenteditable="true" style="padding: 24px; background: #ffffff; color: #1e293b; border-radius: 8px; border: 1px solid #cbd5e1; min-height: 480px; font-size: 0.92rem; line-height: 1.65; font-family: Arial, sans-serif; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04); outline: none;">
+          <div id="standaloneCoverLetterEditor" contenteditable="true" style="padding: 24px; background: #ffffff; color: #1e293b; border-radius: 8px; border: 1px solid #cbd5e1; min-height: 480px; font-size: 0.92rem; line-height: 1.65; font-family: Arial, sans-serif; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04); outline: none;">
             Loading cover letter preview...
           </div>
         </div>

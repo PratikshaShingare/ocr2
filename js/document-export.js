@@ -50,10 +50,11 @@ function prepareFinalOutputSummary() {
 async function downloadCoverLetterDocx() {
   showToast('Preparing Word document export...', 'info');
 
+  const editorEl = document.getElementById('standaloneCoverLetterEditor') || document.getElementById('coverLetterEditor');
   const payload = {
     docType: 'cover_letter',
-    template: AppStore.coverLetter.templateType,
-    html: document.getElementById('coverLetterEditor')?.innerHTML || AppStore.coverLetter.renderedHtml,
+    template: AppStore.coverLetter.templateType || 'Europe',
+    html: editorEl?.innerHTML || AppStore.coverLetter.renderedHtml,
     applicant: AppStore.applicant,
     travel: AppStore.travel,
     travellers: AppStore.travellers,
@@ -87,10 +88,11 @@ async function downloadCoverLetterDocx() {
 async function downloadCoverLetterPdf() {
   showToast('Preparing PDF export...', 'info');
 
+  const editorEl = document.getElementById('standaloneCoverLetterEditor') || document.getElementById('coverLetterEditor');
   const payload = {
     docType: 'cover_letter',
-    template: AppStore.coverLetter.templateType,
-    html: document.getElementById('coverLetterEditor')?.innerHTML || AppStore.coverLetter.renderedHtml,
+    template: AppStore.coverLetter.templateType || 'Europe',
+    html: editorEl?.innerHTML || AppStore.coverLetter.renderedHtml,
     applicant: AppStore.applicant,
     travel: AppStore.travel,
     travellers: AppStore.travellers,
@@ -115,7 +117,8 @@ async function downloadCoverLetterPdf() {
   }
 
   // Fallback: Print dialog styled specifically for A4 PDF export
-  printElementToPdf('coverLetterEditor', 'Visa Cover Letter');
+  const printId = editorEl ? editorEl.id : 'coverLetterEditor';
+  printElementToPdf(printId, 'Visa Cover Letter');
 }
 
 /**
@@ -557,12 +560,15 @@ function printHotelBlockingPdf(hotels, applicant) {
 function triggerBlobDownload(blob, filename) {
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
+  a.style.display = 'none';
   a.href = url;
   a.download = filename;
   document.body.appendChild(a);
   a.click();
-  a.remove();
-  window.URL.revokeObjectURL(url);
+  setTimeout(() => {
+    if (a.parentNode) a.parentNode.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }, 2500);
 }
 
 /**
